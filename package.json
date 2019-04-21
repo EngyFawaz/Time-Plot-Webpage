@@ -1,0 +1,27 @@
+{
+  "name": "websocket-test",
+  "version": "1.0.0",
+  "description": "Testing server for Websockets",
+  "main": "app.js",
+  "dependencies": {
+    "@amcharts/amcharts4": "^4.4.0",
+    "@amcharts/amcharts4-geodata": "^4.1.4",
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "express": "^4.16.4",
+    "express-ws": "^4.0.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "webpack": "^4.30.0",
+    "webpack-dev-middleware": "^3.6.2",
+    "websocket": "^1.0.28"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
