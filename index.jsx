@@ -19,5 +19,5 @@ import TestComponent from './TestComponent.jsx';
 
 document.addEventListener("DOMContentLoaded", function(event) {
   // Mount a React test component to see if it works
-  ReactDOM.render(<TestComponent />, document.getElementById('test'))
+  ReactDOM.render(<TestComponent />, document.getElementById('timeplot'))
 });
