@@ -16,9 +16,9 @@ socket.addEventListener('message', function(msg) {
 });
 
 import TestComponent from './TestComponent.jsx';
-import data from './data';
+//import data from './data';
 
 document.addEventListener("DOMContentLoaded", function(event) {
   // Mount a React test component to see if it works
-  ReactDOM.render(<TestComponent data= {data}/>, document.getElementById('timeplot'))
+  ReactDOM.render(<TestComponent />, document.getElementById('timeplot'))
 });

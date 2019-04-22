@@ -5,9 +5,50 @@ import Graph from './components/graph';
 
 export default class ReactTestComponent extends React.Component {
 
-  render() {
+  constructor(props) {
+    super(props);
 
-    return (<Graph data={this.props.data} />);
+    this.state = {
+      list: []
+    };
+  }
+
+
+  componentDidMount(){
+    var dataArr = [];
+    var x = 1;
+    
+    const socket = new WebSocket("ws://localhost:4000/websocket");
+    
+    let self = this;
+
+    socket.addEventListener('message', function(msg) {
+
+      var addedElem = [];
+      // Parse the data to obtain the actual number
+      var data = JSON.parse(msg.data)["data"]
+
+      addedElem.push(x);
+      addedElem.push(data);
+      //console.log("addedElem "+addedElem);
+
+      x++;
+      //console.log("x "+x);
+
+      dataArr.push(addedElem);
+      self.setState({list : dataArr})
+      //console.log("dataArr " + dataArr);
+
+
+
+    });
+    
+
+    
+  }
+
+  render() {
+    return (<Graph data={this.state.list} />);
   }
 
 }
