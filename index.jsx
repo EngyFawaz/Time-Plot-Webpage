@@ -20,5 +20,5 @@ import data from './data';
 
 document.addEventListener("DOMContentLoaded", function(event) {
   // Mount a React test component to see if it works
-  ReactDOM.render(<TestComponent datasets= {data}/>, document.getElementById('timeplot'))
+  ReactDOM.render(<TestComponent data= {data}/>, document.getElementById('timeplot'))
 });
