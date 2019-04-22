@@ -16,7 +16,7 @@ export default class ReactTestComponent extends React.Component {
 
   componentDidMount(){
     var dataArr = [];
-    var x = 1;
+    var x = 0.1;
     
     const socket = new WebSocket("ws://localhost:4000/websocket");
     
@@ -32,7 +32,7 @@ export default class ReactTestComponent extends React.Component {
       addedElem.push(data);
       //console.log("addedElem "+addedElem);
 
-      x++;
+      x += 0.1;
       //console.log("x "+x);
 
       dataArr.push(addedElem);

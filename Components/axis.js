@@ -21,7 +21,7 @@ export default class Axis extends React.Component {
   render() {
     let coords = this.prepareCords();
     return (
-      <line {...coords} stroke="green" strokeWidth={2} />
+      <line {...coords} stroke="black" strokeWidth={2} />
     )
   }
 }
