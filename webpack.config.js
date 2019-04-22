@@ -6,5 +6,5 @@ var config = {
   module: { rules : [ { test: /\.jsx?$/, exclude: /node_modules/, loader: "babel-loader", options: {presets: ["@babel/react"]} } ] },
   plugins: [ new webpack.ProvidePlugin({ "React": "react", "ReactDOM": "react-dom" }) ]
 }
- module.exports = config;
+module.exports = config;
 
