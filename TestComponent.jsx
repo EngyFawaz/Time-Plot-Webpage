@@ -10,8 +10,13 @@ export default class ReactTestComponent extends React.Component {
 
     this.state = {
       list: [[]],
-      currentIndex: 0
+      currentIndex: 0,
+      selectedIndex: 0
     };
+  }
+
+  selectGraph(event) {
+    this.setState({selectedIndex: event.target.value});
   }
 
 
@@ -42,21 +47,11 @@ export default class ReactTestComponent extends React.Component {
      
       dataArr[index].push(addedElem);
 
-      // if(x >= 5){
-      //   diff /= 2;
-      //   x = diff;
-      //   console.log(dataArr);
-      //   for(var i = 0 ; i< dataArr.length ; i ++){
-      //     dataArr[i][0] = x;
-      //   }
-      //   console.log(dataArr);
-      // }
-
       if(x >= 19){
         x = diff;
         index++;
         dataArr.push([]);
-        self.setState({currentIndex : index , list : dataArr})
+        self.setState({currentIndex : index , list : dataArr , selectedIndex: index})
         console.log("index " + index)
         
       }
@@ -70,8 +65,20 @@ export default class ReactTestComponent extends React.Component {
   }
 
   render() {
+    let options = this.state.list.map((_, index) => {
+      return <option key={index} value={index}>Graph {index + 1}</option>
+    });
+
     console.log(this.state.list[this.state.currentIndex]);
-    return (<Graph data={this.state.list[this.state.currentIndex]} />);
+    return (<div> 
+      
+      <select
+          value={this.state.selectedIndex}
+          onChange={this.selectGraph.bind(this)} >
+          {options}
+        </select>
+        
+      <Graph data={this.state.list[this.state.selectedIndex]} /> </div>);
   }
 
 }
