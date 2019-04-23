@@ -9,15 +9,18 @@ export default class ReactTestComponent extends React.Component {
     super(props);
 
     this.state = {
-      list: []
+      list: [[]],
+      currentIndex: 0
     };
   }
 
 
   componentDidMount(){
-    var dataArr = [];
+    var dataArr = [[]];
     var x = 0.1;
-    
+    var diff = 0.1;
+    var index = 0;
+
     const socket = new WebSocket("ws://localhost:4000/websocket");
     
     let self = this;
@@ -28,27 +31,47 @@ export default class ReactTestComponent extends React.Component {
       // Parse the data to obtain the actual number
       var data = JSON.parse(msg.data)["data"]
 
+      
       addedElem.push(x);
       addedElem.push(data);
       //console.log("addedElem "+addedElem);
 
-      x += 0.1;
+      x += diff;
       //console.log("x "+x);
+      
+     
+      dataArr[index].push(addedElem);
 
-      dataArr.push(addedElem);
-      self.setState({list : dataArr})
-      //console.log("dataArr " + dataArr);
+      // if(x >= 5){
+      //   diff /= 2;
+      //   x = diff;
+      //   console.log(dataArr);
+      //   for(var i = 0 ; i< dataArr.length ; i ++){
+      //     dataArr[i][0] = x;
+      //   }
+      //   console.log(dataArr);
+      // }
+
+      if(x >= 19){
+        x = diff;
+        index++;
+        dataArr.push([]);
+        self.setState({currentIndex : index , list : dataArr})
+        console.log("index " + index)
+        
+      }
+      else{
+        self.setState({list : dataArr})
+      }
 
 
 
     });
-    
-
-    
   }
 
   render() {
-    return (<Graph data={this.state.list} />);
+    console.log(this.state.list[this.state.currentIndex]);
+    return (<Graph data={this.state.list[this.state.currentIndex]} />);
   }
 
 }

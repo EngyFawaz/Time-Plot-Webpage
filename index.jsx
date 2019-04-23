@@ -16,7 +16,6 @@ socket.addEventListener('message', function(msg) {
 });
 
 import TestComponent from './TestComponent.jsx';
-//import data from './data';
 
 document.addEventListener("DOMContentLoaded", function(event) {
   // Mount a React test component to see if it works
